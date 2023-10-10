@@ -10,11 +10,10 @@ const TodoItem = (props) => {
         <th class="align-middle">
           <div class="checkbox">
             <input
-              class="form-check-input me-2"
+              input
               type="checkbox"
-              value=""
-              aria-label="..."
               id="checkbox1"
+              checked={props.todoItem.done}
             />
             <label for="checkbox1">
               <span class="ms-2">Task #{props.todoItem.id}</span>
