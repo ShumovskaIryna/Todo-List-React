@@ -3,62 +3,11 @@ import Filters from './Filters';
 import NewItem from './NewItem';
 import TodoItem from './TodoItem';
 import { FaPlus } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
-const data = {
-  todoItem: [
-    {
-      id: 1,
-      name: 'Wash dishes',
-      description: 'Wash dishes and make sure that you do it perfect',
-      priority: 'medium',
-      bg: 'warning',
-      isDone: true,
-    },
-    {
-      id: 2,
-      name: 'Do test task',
-      description: 'Do test task and make sure that you do it perfect',
-      priority: 'high',
-      bg: 'danger',
-      isDone: true,
-    },
-    {
-      id: 3,
-      name: 'Cook dinner',
-      description: 'Cook dinner and make sure that you do it perfect',
-      priority: 'low',
-      bg: 'success',
-      isDone: true,
-    },
-    {
-      id: 4,
-      name: 'Watch black mirror',
-      description:
-        'Watch new series BLACK MIRROR and make sure that you do it perfect',
-      priority: 'high',
-      bg: 'danger',
-      isDone: false,
-    },
-    {
-      id: 5,
-      name: 'Do sport',
-      description: 'Do sport and make sure that you do it perfect',
-      priority: 'medium',
-      bg: 'warning',
-      isDone: false,
-    },
-    {
-      id: 6,
-      name: 'Run, jump & push up',
-      description: 'Run, jump & push up and make sure that you do it perfect',
-      priority: 'high',
-      bg: 'danger',
-      isDone: false,
-    },
-  ],
-};
 const Home = () => {
   const [shouldShowForm, toggleForm] = useState(false);
+  const state = useSelector((state) => state.handleTodo);
   return (
     <div>
       <section className="mvh-100 gradient-custom-2">
@@ -91,7 +40,6 @@ const Home = () => {
                       />
                     </button>
                   </div>
-
                   {shouldShowForm ? (
                     <NewItem
                       toggleForm={toggleForm}
@@ -107,13 +55,12 @@ const Home = () => {
                       <tr>
                         <th scope="col">Task</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Priority</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
-                      {data.todoItem.map((el) => (
+                      {state.map((el) => (
                         <TodoItem key={el.id} todoItem={el} />
                       ))}
                     </tbody>

@@ -6,8 +6,6 @@ const NewItem = (props) => {
   const [inputs, setInputs] = useState({
     name: '',
     description: '',
-    priority: '',
-    bg: '',
     isDone: false,
     submitted: false,
   });
@@ -67,46 +65,6 @@ const NewItem = (props) => {
               <label className="form-label" for="form2">
                 Description
               </label>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="high"
-                  id="flexRadioDefault1"
-                  value={inputs.priority}
-                  onChange={(e) => handleChange(e)}
-                />
-                <label className="form-check-label" for="flexRadioDefault1">
-                  {' '}
-                  High priority{' '}
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="medium"
-                  id="flexRadioDefault2"
-                  value={inputs.priority}
-                />
-                <label className="form-check-label" for="flexRadioDefault2">
-                  {' '}
-                  Medium priority{' '}
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="low"
-                  id="flexRadioDefault2"
-                  value={inputs.priority}
-                />
-                <label className="form-check-label" for="flexRadioDefault2">
-                  {' '}
-                  Low priority{' '}
-                </label>
-              </div>
               <button type="submit" className="btn btn-info ms-2">
                 Add New Item
               </button>

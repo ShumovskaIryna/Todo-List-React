@@ -24,14 +24,6 @@ const TodoItem = (props) => {
           <span>{props.todoItem.description}</span>
         </td>
         <td className="align-middle">
-          <h6 className="mb-0">
-            <span className={`badge bg-${props.todoItem.bg}`}>
-              {props.todoItem.priority} priority
-            </span>
-          </h6>
-        </td>
-
-        <td className="align-middle">
           <a href="#!" data-mdb-toggle="tooltip" title="Edit">
             <FaPen
               role="edit_button"

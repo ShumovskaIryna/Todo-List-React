@@ -1,13 +1,27 @@
 import { Types } from '../../constants/actionTypes';
 
-const initialState = [];
 
-const handleTodo = (state = initialState, action) => {
+const data = [
+    {
+      id: 1,
+      name: 'Do test task',
+      description: 'Do test task and make sure that you have done it perfect',
+      isDone: true,
+    },
+    {
+      id: 2,
+      name: 'Cook dinner',
+      description: 'Cook dinner and make sure that you have done it perfect',
+      isDone: false,
+    },
+  ];
+
+const handleTodo = (state = data, action) => {
   switch (action.type) {
     case Types.ADD_ITEM:
       return [
-        ...state,
-        action.payload
+        action.payload,
+        ...state
       ];
     case Types.UPDATE_ITEM:
       return {
