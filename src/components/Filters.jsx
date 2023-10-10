@@ -7,7 +7,7 @@ const Filters = () => {
   ];
   return (
     <div>
-      <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
+      <ul className="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
         {filters.map((el) => (
           <Filter key={el.id} filterItem={el} />
         ))}

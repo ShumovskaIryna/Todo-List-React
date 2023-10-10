@@ -6,32 +6,32 @@ const TodoItem = (props) => {
   const [shouldShowItemDetails, toggleItemDetails] = useState(false);
   return (
     <>
-      <tr class="fw-normal">
-        <th class="align-middle">
-          <div class="checkbox">
+      <tr className="fw-normal">
+        <th className="align-middle">
+          <div className="checkbox">
             <input
               input
               type="checkbox"
               id="checkbox1"
-              checked={props.todoItem.done}
+              checked={props.todoItem.isDone}
             />
             <label for="checkbox1">
-              <span class="ms-2">Task #{props.todoItem.id}</span>
+              <span className="ms-2">{props.todoItem.name}</span>
             </label>
           </div>
         </th>
-        <td class="align-middle">
-          <span>{props.todoItem.name}</span>
+        <td className="align-middle">
+          <span>{props.todoItem.description}</span>
         </td>
-        <td class="align-middle">
-          <h6 class="mb-0">
-            <span class={`badge bg-${props.todoItem.bg}`}>
+        <td className="align-middle">
+          <h6 className="mb-0">
+            <span className={`badge bg-${props.todoItem.bg}`}>
               {props.todoItem.priority} priority
             </span>
           </h6>
         </td>
 
-        <td class="align-middle">
+        <td className="align-middle">
           <a href="#!" data-mdb-toggle="tooltip" title="Edit">
             <FaPen
               role="edit_button"
@@ -44,12 +44,11 @@ const TodoItem = (props) => {
             />
           </a>
         </td>
-        <td class="align-middle">
+        <td className="align-middle">
           <a href="#!" data-mdb-toggle="tooltip" title="Remove">
             <FaTrash
               role="delete_button"
-              className="delete"
-              class="fas fa-trash-alt fa-lg text-warning"
+              className="fas fa-trash-alt fa-lg text-warning"
             />
           </a>
         </td>
