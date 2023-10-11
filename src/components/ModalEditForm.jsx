@@ -49,7 +49,7 @@ const ModalEditForm = (props) => {
             onSubmit={handleSubmit}
           >
             <div className="form-outline flex-fill">
-              <label className="form-label" for="form2">
+              <label className="form-label" htmlFor="form2">
                 Edit task
               </label>
               <input
@@ -61,7 +61,7 @@ const ModalEditForm = (props) => {
                 onChange={(e) => handleChange(e)}
                 required
               />
-              <label className="form-label" for="form2">
+              <label className="form-label" htmlFor="form2">
                 Edit Description
               </label>
               <input
