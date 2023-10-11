@@ -1,4 +1,6 @@
+import React from 'react';
 import Filter from './Filter';
+
 const Filters = () => {
   const filters = [
     { id: 1, name: 'All' },
