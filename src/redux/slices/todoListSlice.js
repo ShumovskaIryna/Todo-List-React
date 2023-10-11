@@ -3,8 +3,34 @@ import { Filters } from '../../constants/constants';
 
 const initialValue = {
   filterStatus: Filters.ALL,
-  todoList: [],
-  filtredTodoList: [],
+  todoList: [
+    {
+      id: 123,
+      name: 'Buy Coffee',
+      description: '☕️',
+      status: Filters.COMPLETED
+    },
+    {
+      id: 124,
+      name: 'Do Test Task',
+      description: '💻',
+      status: Filters.ACTIVE
+    }
+  ],
+  filtredTodoList: [
+    {
+      id: 123,
+      name: 'Buy Coffee',
+      description: '☕️',
+      status: Filters.ACTIVE
+    },
+    {
+      id: 124,
+      name: 'Do Test Task',
+      description: '💻',
+      status: Filters.COMPLETED
+    }
+  ],
 };
 
 export const todoSlice = createSlice({

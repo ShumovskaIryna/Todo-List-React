@@ -71,7 +71,6 @@ const ModalEditForm = (props) => {
                 name="description"
                 value={inputs.description}
                 onChange={(e) => handleChange(e)}
-                required
               />
 
               <div class="row">
