@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateFilterStatus } from '../redux/slices/todoListSlice';
+import { filterTodoList } from '../redux/slices/todoListSlice';
 
 const Filter = (props) => {
   const initialFilterStatus = useSelector((state) => state.todo.filterStatus);
-  const [, setFilterStatus] = useState(initialFilterStatus);
   const dispatch = useDispatch();
 
   const handleClick = (filter) => {
-    setFilterStatus(filter);
-    dispatch(updateFilterStatus(filter));
+    dispatch(filterTodoList(filter));
   };
 
   return (

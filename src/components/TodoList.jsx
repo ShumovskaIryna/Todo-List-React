@@ -3,15 +3,7 @@ import TodoItem from './TodoItem';
 import { useSelector } from 'react-redux';
 
 const TodoList = () => {
-  const todoList = useSelector((state) => state.todo.todoList);
-  const filterStatus = useSelector((state) => state.todo.filterStatus);
-  const sortedTodoList = [...todoList];
-  const filteredTodoList = sortedTodoList.filter((item) => {
-    if (filterStatus === 'All') {
-      return true;
-    }
-    return item.status === filterStatus;
-  });
+  const filteredTodoList = useSelector((state) => state.todo.filtredTodoList);
 
   return (
     <>

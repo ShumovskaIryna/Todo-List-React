@@ -36,13 +36,12 @@ const TodoItem = (props) => {
         <th className="align-middle">
           <div className="checkbox">
             <input
-              input
               type="checkbox"
-              id="checkbox1"
+              id={props.todoItem.id}
               checked={isChecked}
               onClick={() => handleCheck()}
             />
-            <label for="checkbox1">
+            <label for={props.todoItem.id}>
               <span className="ms-2">{props.todoItem.name}</span>
             </label>
           </div>

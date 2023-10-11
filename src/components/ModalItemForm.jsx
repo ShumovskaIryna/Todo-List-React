@@ -33,7 +33,7 @@ const ModalItemForm = (props) => {
           <div className="row justify-content-end">
             <button
               type="button"
-              class="close col-2"
+              className="close col-2"
               data-dismiss="modal"
               aria-label="Close"
               onClick={() => {
@@ -73,8 +73,8 @@ const ModalItemForm = (props) => {
                 required
               />
 
-              <div class="row">
-                <div class="col-auto mr-auto">
+              <div className="row">
+                <div className="col-auto mr-auto">
                   {' '}
                   <label htmlFor="type">
                     Status
@@ -90,7 +90,7 @@ const ModalItemForm = (props) => {
                     </select>
                   </label>
                 </div>
-                <div class="col-auto">
+                <div className="col-auto">
                   <button type="submit" className="btn btn-info mt-4">
                     Add New Item
                   </button>
