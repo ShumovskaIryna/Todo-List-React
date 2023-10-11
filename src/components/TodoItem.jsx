@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaTrash, FaPen } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { deleteTodo } from '../redux/slices/todoListSlice';
-import ModalItemForm from './ModalItemForm';
+import ModalEditForm from './ModalEditForm';
 
 const TodoItem = (props) => {
   const [shouldShowForm, toggleForm] = useState(false);
@@ -45,9 +45,10 @@ const TodoItem = (props) => {
         </td>
       </tr>
       {shouldShowForm ? (
-        <ModalItemForm
+        <ModalEditForm
           toggleForm={toggleForm}
           shouldShowForm={shouldShowForm}
+          item={props.todoItem}
         />
       ) : (
         <></>

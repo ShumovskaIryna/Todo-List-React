@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../redux/slices/todoListSlice';
+import { updateTodo } from '../redux/slices/todoListSlice';
 
-const ModalItemForm = (props) => {
+const ModalEditForm = (props) => {
   const [inputs, setInputs] = useState({
-    id: Date.now().toString(),
-    name: '',
-    description: '',
-    status: 'Active',
+    id: props.item.id,
+    name: props.item.name,
+    description: props.item.description,
+    status: props.item.status,
   });
 
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const ModalItemForm = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(addTodo(inputs));
+    dispatch(updateTodo(inputs));
     props.toggleForm((current) => !current);
   }
 
@@ -49,7 +49,7 @@ const ModalItemForm = (props) => {
           >
             <div className="form-outline flex-fill">
               <label className="form-label" for="form2">
-                New task
+                Edit task
               </label>
               <input
                 type="text"
@@ -61,7 +61,7 @@ const ModalItemForm = (props) => {
                 required
               />
               <label className="form-label" for="form2">
-                Description
+                Edit Description
               </label>
               <input
                 type="text"
@@ -92,7 +92,7 @@ const ModalItemForm = (props) => {
                 </div>
                 <div class="col-auto">
                   <button type="submit" className="btn btn-info mt-4">
-                    Add New Item
+                    Save changes
                   </button>
                 </div>
               </div>
@@ -103,4 +103,4 @@ const ModalItemForm = (props) => {
     </>
   );
 };
-export default ModalItemForm;
+export default ModalEditForm;

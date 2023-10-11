@@ -20,10 +20,8 @@ const Filter = (props) => {
             'nav-link ' +
             (props.filterItem.name === initialFilterStatus ? 'active' : '')
           }
-          id="ex2-tab-1"
           data-bs-toggle="tab"
           role="tab"
-          aria-controls="ex2-tabs-1"
           aria-selected="true"
           style={{ color: '#6da2fd' }}
           onClick={() => {
