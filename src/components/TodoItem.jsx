@@ -1,21 +1,48 @@
-import React, { useState } from 'react';
-import FullItem from './FullItem';
+import React, { useState, useEffect } from 'react';
 import { FaTrash, FaPen } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { deleteTodo, updateTodo } from '../redux/slices/todoListSlice';
+import ModalEditForm from './ModalEditForm';
+import { Filters } from '../constants/constants';
 
 const TodoItem = (props) => {
-  const [shouldShowItemDetails, toggleItemDetails] = useState(false);
+  const [shouldShowForm, toggleForm] = useState(false);
+  const [isChecked, setChecked] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (props.todoItem.status === Filters.COMPLETED) {
+      setChecked(true);
+    } else {
+      setChecked(false);
+    }
+  }, [props.todoItem.status]);
+
+  const handleCheck = () => {
+    dispatch(
+      updateTodo({
+        ...props.todoItem,
+        status: isChecked ? Filters.ACTIVE : Filters.COMPLETED,
+      }),
+    );
+    setChecked((isChecked) => !isChecked);
+  };
+
+  const handleRemove = (todoItem) => {
+    dispatch(deleteTodo(todoItem));
+  };
   return (
     <>
       <tr className="fw-normal">
         <th className="align-middle">
           <div className="checkbox">
             <input
-              input
               type="checkbox"
-              id="checkbox1"
-              checked={props.todoItem.isDone}
+              id={props.todoItem.id}
+              checked={isChecked}
+              onClick={() => handleCheck()}
             />
-            <label for="checkbox1">
+            <label htmlFor={props.todoItem.id}>
               <span className="ms-2">{props.todoItem.name}</span>
             </label>
           </div>
@@ -24,33 +51,29 @@ const TodoItem = (props) => {
           <span>{props.todoItem.description}</span>
         </td>
         <td className="align-middle">
-          <a href="#!" data-mdb-toggle="tooltip" title="Edit">
-            <FaPen
-              role="edit_button"
-              className="edit"
-              icon="fa-solid fa-pen"
-              style={{ color: '#38b3ff' }}
-              onClick={() => {
-                toggleItemDetails((current) => !current);
-              }}
-            />
-          </a>
+          <FaPen
+            role="edit_button"
+            className="edit"
+            icon="fa-solid fa-pen"
+            style={{ color: '#38b3ff' }}
+            onClick={() => {
+              toggleForm((current) => !current);
+            }}
+          />
         </td>
         <td className="align-middle">
-          <a href="#!" data-mdb-toggle="tooltip" title="Remove">
-            <FaTrash
-              role="delete_button"
-              className="fas fa-trash-alt fa-lg text-warning"
-            />
-          </a>
+          <FaTrash
+            role="delete_button"
+            className="fas fa-trash-alt fa-lg text-warning"
+            onClick={() => handleRemove(props.todoItem)}
+          />
         </td>
       </tr>
-
-      {shouldShowItemDetails ? (
-        <FullItem
-          shouldShowProductDetails={shouldShowItemDetails}
-          toggleItemDetails={toggleItemDetails}
-          fullItem={props.todoItem}
+      {shouldShowForm ? (
+        <ModalEditForm
+          toggleForm={toggleForm}
+          shouldShowForm={shouldShowForm}
+          item={props.todoItem}
         />
       ) : (
         <></>

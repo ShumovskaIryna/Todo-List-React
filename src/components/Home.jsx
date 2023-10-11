@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Filters from './Filters';
-import NewItem from './NewItem';
-import TodoItem from './TodoItem';
-import { FaPlus } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
+import NewTodoItem from './NewTodoItem';
+import TodoList from './TodoList';
 
 const Home = () => {
-  const [shouldShowForm, toggleForm] = useState(false);
-  const state = useSelector((state) => state.handleTodo);
   return (
     <div>
       <section className="mvh-100 gradient-custom-2">
@@ -24,47 +20,9 @@ const Home = () => {
                     />
                     <h2 className="my-4">Task List</h2>
                   </div>
-                  <div className="text-center pt-1 pb-3">
-                    <button
-                      type="button"
-                      className="btn btn-success btn-rounded"
-                      data-mdb-ripple-color="dark"
-                      onClick={() => {
-                        toggleForm((current) => !current);
-                      }}
-                    >
-                      Add New Todo Item{' '}
-                      <FaPlus
-                        role="plus_button"
-                        className="fas fa-solid fa-plus"
-                      />
-                    </button>
-                  </div>
-                  {shouldShowForm ? (
-                    <NewItem
-                      toggleForm={toggleForm}
-                      shouldShowForm={shouldShowForm}
-                    />
-                  ) : (
-                    <></>
-                  )}
+                  <NewTodoItem />
                   <Filters />
-                  {/* TODO: move to another component */}
-                  <table className="table text-white mb-0">
-                    <thead>
-                      <tr>
-                        <th scope="col">Task</th>
-                        <th scope="col">Description</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {state.map((el) => (
-                        <TodoItem key={el.id} todoItem={el} />
-                      ))}
-                    </tbody>
-                  </table>
+                  <TodoList />
                 </div>
               </div>
             </div>

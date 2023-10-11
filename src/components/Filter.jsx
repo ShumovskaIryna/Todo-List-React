@@ -1,19 +1,33 @@
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterTodoList } from '../redux/slices/todoListSlice';
+
 const Filter = (props) => {
+  const initialFilterStatus = useSelector((state) => state.todo.filterStatus);
+  const dispatch = useDispatch();
+
+  const handleClick = (filter) => {
+    dispatch(filterTodoList(filter));
+  };
+
   return (
     <>
       <li className="nav-item" role="presentation">
-        <a
-          className="nav-link"
-          id="ex2-tab-1"
+        <div
+          className={
+            'nav-link ' +
+            (props.filterItem.name === initialFilterStatus ? 'active' : '')
+          }
           data-bs-toggle="tab"
-          href="#ex2-tabs-1"
           role="tab"
-          aria-controls="ex2-tabs-1"
           aria-selected="true"
           style={{ color: '#6da2fd' }}
+          onClick={() => {
+            handleClick(props.filterItem.name);
+          }}
         >
           {props.filterItem.name}
-        </a>
+        </div>
       </li>
     </>
   );

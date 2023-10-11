@@ -1,6 +1,7 @@
 .gradient-custom-2 {
   /* fallback for old browsers */
   background: #7e40f6;
+  min-height: 100vh;
   min-width: 520px;
 
   /* Chrome 10-25, Safari 5.1-6 */
@@ -25,4 +26,27 @@
   border: 2px solid rgba(255, 255, 255, 0.05);
   background-clip: padding-box;
   box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+}
+
+.black {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+  overflow: auto;
+}
+.white {
+  position: relative;
+  display: block;
+  margin: 3% auto;
+  width: 80%;
+  padding: 40px 30px;
+  background: linear-gradient(
+    to right,
+    rgba(126, 64, 246, 1),
+    rgba(80, 139, 252, 1)
+  );
 }
