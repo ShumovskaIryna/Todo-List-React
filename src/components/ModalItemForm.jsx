@@ -4,6 +4,7 @@ import { addTodo } from '../redux/slices/todoListSlice';
 
 const ModalItemForm = (props) => {
   const [inputs, setInputs] = useState({
+    id: Date.now().toString(),
     name: '',
     description: '',
     status: 'Active',

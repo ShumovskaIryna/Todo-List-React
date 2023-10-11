@@ -15,11 +15,13 @@ const Filter = (props) => {
   return (
     <>
       <li className="nav-item" role="presentation">
-        <a
-          className="nav-link"
+        <div
+          className={
+            'nav-link ' +
+            (props.filterItem.name === initialFilterStatus ? 'active' : '')
+          }
           id="ex2-tab-1"
           data-bs-toggle="tab"
-          href="#ex2-tabs-1"
           role="tab"
           aria-controls="ex2-tabs-1"
           aria-selected="true"
@@ -29,7 +31,7 @@ const Filter = (props) => {
           }}
         >
           {props.filterItem.name}
-        </a>
+        </div>
       </li>
     </>
   );
