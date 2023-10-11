@@ -17,7 +17,9 @@ const TodoList = () => {
               <th scope="col"></th>
             </tr>
           ) : (
-            <th scope="col">Your List is empty</th>
+            <tr>
+              <th scope="col">Your List is empty</th>
+            </tr>
           )}
         </thead>
         <tbody>
