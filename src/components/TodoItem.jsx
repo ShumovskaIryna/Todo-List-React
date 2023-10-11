@@ -41,7 +41,7 @@ const TodoItem = (props) => {
               checked={isChecked}
               onClick={() => handleCheck()}
             />
-            <label for={props.todoItem.id}>
+            <label htmlFor={props.todoItem.id}>
               <span className="ms-2">{props.todoItem.name}</span>
             </label>
           </div>

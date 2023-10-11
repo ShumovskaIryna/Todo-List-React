@@ -9,12 +9,18 @@ const TodoList = () => {
     <>
       <table className="table text-white mb-0">
         <thead>
-          <tr>
-            <th scope="col">Task</th>
-            <th scope="col">Description</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-          </tr>
+          {filteredTodoList.length ? (
+            <tr>
+              <th scope="col">Task</th>
+              <th scope="col">Description</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          ) : (
+            <tr>
+              <th scope="col">Your List is empty</th>
+            </tr>
+          )}
         </thead>
         <tbody>
           {filteredTodoList.map((el) => (
