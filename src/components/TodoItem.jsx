@@ -1,12 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaTrash, FaPen } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { deleteTodo } from '../redux/slices/todoListSlice';
+import { deleteTodo, updateTodo } from '../redux/slices/todoListSlice';
 import ModalEditForm from './ModalEditForm';
 
 const TodoItem = (props) => {
   const [shouldShowForm, toggleForm] = useState(false);
+  const [isChecked, setChecked] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (props.todoItem.status === 'Completed') {
+      setChecked(true);
+    } else {
+      setChecked(false);
+    }
+  }, [props.todoItem.status]);
+
+  const handleCheck = () => {
+    dispatch(
+      updateTodo({
+        ...props.todoItem,
+        status: isChecked ? 'Active' : 'Completed',
+      }),
+    );
+    setChecked((isChecked) => !isChecked);
+  };
 
   const handleRemove = (todoItem) => {
     dispatch(deleteTodo(todoItem));
@@ -16,7 +35,13 @@ const TodoItem = (props) => {
       <tr className="fw-normal">
         <th className="align-middle">
           <div className="checkbox">
-            <input input type="checkbox" id="checkbox1" />
+            <input
+              input
+              type="checkbox"
+              id="checkbox1"
+              checked={isChecked}
+              onClick={() => handleCheck()}
+            />
             <label for="checkbox1">
               <span className="ms-2">{props.todoItem.name}</span>
             </label>
