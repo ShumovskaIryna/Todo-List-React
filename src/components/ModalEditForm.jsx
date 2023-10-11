@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateTodo } from '../redux/slices/todoListSlice';
+import { Filters } from '../constants/constants';
 
 const ModalEditForm = (props) => {
   const [inputs, setInputs] = useState({
@@ -85,8 +86,8 @@ const ModalEditForm = (props) => {
                       value={inputs.status}
                       onChange={(e) => handleChange(e)}
                     >
-                      <option value="Active">Active</option>
-                      <option value="Completed">Completed</option>
+                      <option value={Filters.ACTIVE}>Active</option>
+                      <option value={Filters.COMPLETED}>Completed</option>
                     </select>
                   </label>
                 </div>

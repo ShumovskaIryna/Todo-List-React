@@ -3,6 +3,7 @@ import { FaTrash, FaPen } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, updateTodo } from '../redux/slices/todoListSlice';
 import ModalEditForm from './ModalEditForm';
+import { Filters } from '../constants/constants';
 
 const TodoItem = (props) => {
   const [shouldShowForm, toggleForm] = useState(false);
@@ -10,7 +11,7 @@ const TodoItem = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (props.todoItem.status === 'Completed') {
+    if (props.todoItem.status === Filters.COMPLETED) {
       setChecked(true);
     } else {
       setChecked(false);
@@ -21,7 +22,7 @@ const TodoItem = (props) => {
     dispatch(
       updateTodo({
         ...props.todoItem,
-        status: isChecked ? 'Active' : 'Completed',
+        status: isChecked ? Filters.ACTIVE : Filters.COMPLETED,
       }),
     );
     setChecked((isChecked) => !isChecked);
